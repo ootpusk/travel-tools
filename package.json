@@ -1,0 +1,51 @@
+{
+  "name": "travel-tools",
+  "version": "1.0.0",
+  "description": "45 полезных приложений и сайтов для путешественников - красивый лендинг",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "start:node": "npx serve .",
+    "start:php": "php -S localhost:8000",
+    "build": "echo 'No build step required for static site'",
+    "test": "echo 'No tests specified'",
+    "lint": "echo 'No linting configured'",
+    "format": "echo 'No formatting configured'"
+  },
+  "keywords": [
+    "travel",
+    "tourism",
+    "apps",
+    "websites",
+    "landing-page",
+    "responsive",
+    "modern-ui",
+    "travel-tools",
+    "russian-travel",
+    "hotels",
+    "flights",
+    "tours",
+    "transport"
+  ],
+  "author": "Travel Tools Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/travel-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/travel-tools/issues"
+  },
+  "homepage": "https://your-username.github.io/travel-tools",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
