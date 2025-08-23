@@ -544,3 +544,16 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: #5a67d8;
 }
+
+/* External link icon in service headers */
+.service-card h3 a i {
+    font-size: 18px;
+    margin-left: 6px;
+    color: #667eea;
+    transition: all 0.3s ease;
+}
+
+.service-card h3 a:hover i {
+    transform: translateX(2px);
+    color: #5a6fd8;
+}
