@@ -17,6 +17,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 navItems.forEach(item => item.classList.remove('active'));
                 // Add active class to corresponding nav item
                 navItems[index].classList.add('active');
+                
+                // Auto-scroll navigation to show active item
+                const activeNavItem = navItems[index];
+                const navScroll = document.querySelector('.nav-scroll');
+                if (navScroll && activeNavItem) {
+                    const itemLeft = activeNavItem.offsetLeft;
+                    const itemWidth = activeNavItem.offsetWidth;
+                    const scrollLeft = navScroll.scrollLeft;
+                    const containerWidth = navScroll.offsetWidth;
+                    
+                    // Always scroll to show the active item properly
+                    // For first item, scroll to beginning; for others, center them
+                    let targetScrollLeft;
+                    if (index === 0) {
+                        // First item - scroll to the beginning
+                        targetScrollLeft = 0;
+                    } else {
+                        // Other items - center them
+                        targetScrollLeft = Math.max(0, itemLeft - (containerWidth / 2) + (itemWidth / 2));
+                    }
+                    
+                    // Only scroll if we need to move
+                    if (Math.abs(scrollLeft - targetScrollLeft) > 10) {
+                        navScroll.scrollTo({
+                            left: targetScrollLeft,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
             }
         });
     }
@@ -39,6 +68,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     block: 'start'
                 });
             }
+            
+            // Auto-scroll navigation to show clicked item
+            const navScroll = document.querySelector('.nav-scroll');
+            if (navScroll) {
+                const itemLeft = this.offsetLeft;
+                const itemWidth = this.offsetWidth;
+                const containerWidth = navScroll.offsetWidth;
+                
+                let targetScrollLeft;
+                if (index === 0) {
+                    // First item - scroll to the beginning
+                    targetScrollLeft = 0;
+                } else {
+                    // Other items - center them
+                    targetScrollLeft = Math.max(0, itemLeft - (containerWidth / 2) + (itemWidth / 2));
+                }
+                
+                navScroll.scrollTo({
+                    left: targetScrollLeft,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
     
@@ -47,6 +98,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize active state
     updateActiveNav();
+    
+    // Add horizontal scroll support for navigation
+    const navScroll = document.querySelector('.nav-scroll');
+    if (navScroll) {
+        navScroll.addEventListener('wheel', function(e) {
+            // Prevent vertical scroll when scrolling horizontally over navigation
+            e.preventDefault();
+            
+            // Scroll horizontally based on wheel direction
+            this.scrollLeft += e.deltaY;
+        });
+    }
     
     // Add scroll reveal animation
     const observerOptions = {
@@ -110,8 +173,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const target = entry.target.textContent;
                 if (target === '45') {
                     animateCounter(entry.target, 45);
-                } else if (target === '10') {
-                    animateCounter(entry.target, 10);
+                } else if (target === '11') {
+                    animateCounter(entry.target, 11);
                 }
                 statsObserver.unobserve(entry.target);
             }
