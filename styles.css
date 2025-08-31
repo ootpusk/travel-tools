@@ -683,17 +683,17 @@ body {
 }
 
 .social-link {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     text-decoration: none;
-    padding: 12px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     transition: all 0.3s ease;
     width: 44px;
     height: 44px;
+    position: relative;
 }
 
 .social-link:hover {
@@ -705,6 +705,11 @@ body {
 .social-link i {
     font-size: 20px;
     color: #0088cc;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
 }
 
 /* Footer */
@@ -1031,7 +1036,6 @@ body {
     }
     
     .social-link {
-        padding: 10px;
         width: 40px;
         height: 40px;
     }
