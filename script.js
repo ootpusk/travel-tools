@@ -4,39 +4,48 @@ document.addEventListener('DOMContentLoaded', function() {
     const navItems = document.querySelectorAll('.nav-item');
     const sections = document.querySelectorAll('.category-section');
     
+    // Check if we're on the actual tours page
+    const isActualToursPage = window.location.pathname.includes('actual-tours');
+    
     // Update active navigation item based on scroll position
     function updateActiveNav() {
-        const scrollPosition = window.scrollY + 100;
+        const scrollPosition = window.scrollY + 200; // Увеличиваем отступ для лучшего определения
         
-        sections.forEach((section, index) => {
+        // Упрощенная логика для всех страниц
+        let activeSectionId = null;
+        
+        // Проверяем каждую секцию и находим активную
+        sections.forEach((section) => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                // Remove active class from all nav items
-                navItems.forEach(item => item.classList.remove('active'));
-                // Add active class to corresponding nav item
-                navItems[index].classList.add('active');
+                activeSectionId = section.id;
+            }
+        });
+        
+        if (activeSectionId) {
+            // Remove active class from all nav items
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            // Find and activate the corresponding nav item by href
+            const targetNavItem = document.querySelector(`.nav-item[href="#${activeSectionId}"]`);
+            
+
+            
+            if (targetNavItem) {
+                targetNavItem.classList.add('active');
                 
                 // Auto-scroll navigation to show active item
-                const activeNavItem = navItems[index];
                 const navScroll = document.querySelector('.nav-scroll');
-                if (navScroll && activeNavItem) {
-                    const itemLeft = activeNavItem.offsetLeft;
-                    const itemWidth = activeNavItem.offsetWidth;
+                if (navScroll) {
+                    const itemLeft = targetNavItem.offsetLeft;
+                    const itemWidth = targetNavItem.offsetWidth;
                     const scrollLeft = navScroll.scrollLeft;
                     const containerWidth = navScroll.offsetWidth;
                     
-                    // Always scroll to show the active item properly
-                    // For first item, scroll to beginning; for others, center them
-                    let targetScrollLeft;
-                    if (index === 0) {
-                        // First item - scroll to the beginning
-                        targetScrollLeft = 0;
-                    } else {
-                        // Other items - center them
-                        targetScrollLeft = Math.max(0, itemLeft - (containerWidth / 2) + (itemWidth / 2));
-                    }
+                    // Center the active item
+                    const targetScrollLeft = Math.max(0, itemLeft - (containerWidth / 2) + (itemWidth / 2));
                     
                     // Only scroll if we need to move
                     if (Math.abs(scrollLeft - targetScrollLeft) > 10) {
@@ -47,11 +56,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             }
-        });
+        }
     }
     
     // Smooth scroll to section when nav item is clicked
-    navItems.forEach((item, index) => {
+    navItems.forEach((item) => {
         item.addEventListener('click', function(e) {
             e.preventDefault();
             
@@ -61,11 +70,20 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
             
             // Smooth scroll to section
-            const targetSection = sections[index];
+            let targetSection;
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                targetSection = document.querySelector(href);
+            }
+            
             if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                // Вычисляем правильную позицию с учетом sticky навигации
+                const navHeight = document.querySelector('.category-nav').offsetHeight;
+                const targetPosition = targetSection.offsetTop - navHeight - 50; // Дополнительный отступ
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
             
@@ -77,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const containerWidth = navScroll.offsetWidth;
                 
                 let targetScrollLeft;
+                const index = Array.from(navItems).indexOf(this);
                 if (index === 0) {
                     // First item - scroll to the beginning
                     targetScrollLeft = 0;

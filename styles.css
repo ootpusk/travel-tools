@@ -24,11 +24,42 @@ body {
     color: white;
     padding: 2rem 0;
     text-align: center;
+    position: relative;
 }
 
 .header-content {
     max-width: 800px;
     margin: 0 auto;
+}
+
+.header-top {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.back-to-main {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.back-to-main:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-5px);
+}
+
+.back-to-main i {
+    font-size: 0.8rem;
 }
 
 .logo {
@@ -172,6 +203,7 @@ body {
 
 .category-section {
     margin-bottom: 4rem;
+    scroll-margin-top: 200px; /* Отступ сверху при прокрутке к якорям */
 }
 
 .section-header {
@@ -295,6 +327,317 @@ body {
 .service-type {
     background: #f1f5f9;
     color: #475569;
+}
+
+/* Main Menu for Main.html */
+.main-menu {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 24px;
+    padding: 3rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    border-color: #667eea;
+}
+
+.menu-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.menu-card:hover::before {
+    transform: scaleX(1);
+}
+
+.menu-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    transition: all 0.3s ease;
+}
+
+.menu-icon.school {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.menu-card:hover .menu-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.menu-icon i {
+    font-size: 3rem;
+    color: white;
+}
+
+.menu-card h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1e293b;
+    text-align: center;
+}
+
+.menu-card p {
+    color: #64748b;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.menu-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.menu-features .feature {
+    padding: 0.6rem 1.2rem;
+    background: #f1f5f9;
+    color: #475569;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.menu-card:hover .menu-features .feature {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.menu-arrow {
+    text-align: center;
+    color: #667eea;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.menu-card:hover .menu-arrow {
+    transform: translateX(10px);
+    color: #5a6fd8;
+}
+
+/* Trip Cards for School Alternatives Page */
+.trip-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.trip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    border-color: #667eea;
+}
+
+.trip-image {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.trip-image.vietnam {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.trip-image.istanbul {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.trip-image.thailand {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.trip-image i {
+    font-size: 3rem;
+    color: white;
+}
+
+.trip-content {
+    flex: 1;
+}
+
+.trip-content h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+}
+
+.trip-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.trip-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #64748b;
+}
+
+.trip-detail i {
+    color: #667eea;
+    font-size: 1.1rem;
+    width: 20px;
+}
+
+.trip-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.feature {
+    padding: 0.5rem 1rem;
+    background: #f1f5f9;
+    color: #475569;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.trip-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #f1f5f9;
+    color: #475569;
+    border: 2px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+/* Reasons Grid */
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.reason-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.reason-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    border-color: #667eea;
+}
+
+.reason-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.reason-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.reason-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1e293b;
+}
+
+.reason-card p {
+    color: #64748b;
+    line-height: 1.6;
 }
 
 /* Footer */
