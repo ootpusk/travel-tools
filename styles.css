@@ -680,6 +680,7 @@ body {
 /* Social Links */
 .social-links {
     margin-top: 15px;
+    text-align: center;
 }
 
 .social-link {
@@ -1032,6 +1033,7 @@ body {
     
     .social-links {
         margin-top: 10px;
+        text-align: center;
     }
     
     .social-link {
