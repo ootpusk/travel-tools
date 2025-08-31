@@ -18,6 +18,18 @@ body {
     padding: 0 20px;
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+
 /* Header */
 .header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -51,6 +63,8 @@ body {
     border-radius: 20px;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    white-space: nowrap;
+    max-width: 120px;
 }
 
 .back-to-main:hover {
@@ -145,6 +159,29 @@ body {
     top: 0;
     z-index: 100;
     padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .category-nav {
+        padding: 0.5rem 0;
+    }
+    
+    .nav-scroll {
+        justify-content: flex-start;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-nav {
+        padding: 0.3rem 0;
+    }
+    
+    .nav-scroll {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 .nav-scroll {
@@ -724,30 +761,78 @@ body {
         padding: 0 15px;
     }
     
+    .header {
+        padding: 1.5rem 0;
+    }
+    
+    .header-content {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .header-top {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .back-to-main {
+        display: inline-flex;
+        max-width: none;
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
     .logo {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .tagline {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero {
+        padding: 2rem 0;
     }
     
     .hero-content h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
     }
     
     .hero-content p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-bottom: 2rem;
     }
     
     .hero-stats {
-        gap: 2rem;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     .stat-number {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
     }
     
     .section-header h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
         flex-direction: column;
         gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .section-header p {
+        font-size: 1rem;
+        max-width: 100%;
     }
     
     .services-grid {
@@ -761,6 +846,7 @@ body {
     
     .nav-scroll {
         gap: 0.5rem;
+        padding: 0.5rem 0;
     }
     
     .nav-item {
@@ -775,36 +861,194 @@ body {
     .nav-item span {
         font-size: 0.7rem;
     }
+    
+    /* Main Menu адаптация */
+    .main-menu {
+        padding: 2rem 0;
+    }
+    
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 100%;
+    }
+    
+    .menu-card {
+        padding: 2rem;
+    }
+    
+    .menu-icon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .menu-icon i {
+        font-size: 2.5rem;
+    }
+    
+    .menu-card h2 {
+        font-size: 1.6rem;
+    }
+    
+    .menu-card p {
+        font-size: 1rem;
+    }
+    
+    .menu-features {
+        gap: 0.6rem;
+    }
+    
+    .menu-features .feature {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Trip Cards адаптация */
+    .trip-card {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .trip-image {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+    
+    .trip-image i {
+        font-size: 2.5rem;
+    }
+    
+    .trip-content h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .trip-details {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .trip-features {
+        justify-content: center;
+        gap: 0.6rem;
+    }
+    
+    .feature {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .trip-actions {
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    
+    .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Reasons Grid адаптация */
+    .reasons-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .reason-card {
+        padding: 1.5rem;
+    }
+    
+    .reason-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .reason-icon i {
+        font-size: 1.8rem;
+    }
+    
+    .reason-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .reason-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* Footer адаптация */
+    .footer {
+        padding: 2rem 0 1rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 480px) {
     .header {
-        padding: 1.5rem 0;
+        padding: 1rem 0;
+    }
+    
+    .header-content {
+        padding: 0 0.5rem;
+    }
+    
+    .back-to-main {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .logo {
+        font-size: 1.6rem;
+    }
+    
+    .tagline {
+        font-size: 0.8rem;
     }
     
     .hero {
-        padding: 2rem 0;
+        padding: 1.5rem 0;
     }
     
     .hero-content h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
     
     .hero-content p {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     
     .hero-stats {
-        flex-direction: column;
-        gap: 1.5rem;
+        gap: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.6rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
     }
     
     .section-header h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
     
     .section-header p {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     
     .service-card {
@@ -812,12 +1056,99 @@ body {
     }
     
     .service-icon {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
     }
     
     .service-icon i {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+    }
+    
+    .service-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .service-card p {
+        font-size: 0.9rem;
+    }
+    
+    .payment-type, .service-type {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    /* Main Menu для очень маленьких экранов */
+    .menu-card {
+        padding: 1.5rem;
+    }
+    
+    .menu-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .menu-icon i {
+        font-size: 2rem;
+    }
+    
+    .menu-card h2 {
+        font-size: 1.4rem;
+    }
+    
+    .menu-card p {
+        font-size: 0.9rem;
+    }
+    
+    .menu-features .feature {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Trip Cards для очень маленьких экранов */
+    .trip-card {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .trip-image {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .trip-image i {
+        font-size: 2rem;
+    }
+    
+    .trip-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .trip-detail {
+        font-size: 0.9rem;
+    }
+    
+    .feature {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Navigation для очень маленьких экранов */
+    .nav-item {
+        padding: 0.6rem 0.8rem;
+        min-width: 70px;
+    }
+    
+    .nav-item i {
+        font-size: 1rem;
+    }
+    
+    .nav-item span {
+        font-size: 0.65rem;
     }
 }
 
