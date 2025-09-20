@@ -7,6 +7,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if we're on the actual tours page
     const isActualToursPage = window.location.pathname.includes('actual-tours');
     
+    // Image carousel functionality
+    function initImageCarousel() {
+        const carousels = document.querySelectorAll('.image-carousel');
+        if (!carousels.length) return;
+        
+        carousels.forEach(carousel => {
+            const images = carousel.querySelectorAll('.trip-photo');
+            if (images.length === 0) return;
+            
+            let currentIndex = 0;
+            
+            function showNextImage() {
+                // Hide current image
+                images[currentIndex].classList.remove('active');
+                
+                // Move to next image
+                currentIndex = (currentIndex + 1) % images.length;
+                
+                // Show next image
+                images[currentIndex].classList.add('active');
+            }
+            
+            // Start the carousel
+            setInterval(showNextImage, 3000); // Change every 3 seconds
+        });
+    }
+    
+    // Initialize carousel when page loads
+    initImageCarousel();
+    
     // Update active navigation item based on scroll position
     function updateActiveNav() {
         const scrollPosition = window.scrollY + 200; // Увеличиваем отступ для лучшего определения
